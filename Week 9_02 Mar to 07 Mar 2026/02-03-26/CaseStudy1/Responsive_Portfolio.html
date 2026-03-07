@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Portfolio</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Navbar */
+header {
+    background-color: #111;
+    padding: 15px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: auto;
+}
+
+nav h2 {
+    color: orange;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    color: orange;
+}
+
+/* About Section */
+#about {
+    background: #d3d3d3;
+    padding: 40px;
+    text-align: center;
+}
+
+#about img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+/* Projects */
+#projects {
+    background: #e0e0e0;
+    padding: 40px;
+    text-align: center;
+}
+
+.project-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.project-card {
+    background: #d3d3d3;
+    width: 300px;
+    margin: 15px;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px gray;
+    transition: 0.3s;
+}
+
+.project-card:hover {
+    transform: scale(1.05);
+}
+
+.project-card img {
+    width: 100%;
+    height: 180px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+/* Contact */
+#contact {
+    background: #d3d3d3;
+    padding: 40px;
+    text-align: center;
+}
+
+/* Footer */
+footer {
+    background: #111;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+/* Responsive */
+@media(max-width:768px) {
+
+nav {
+    flex-direction: column;
+}
+
+nav ul {
+    flex-direction: column;
+}
+
+.project-container {
+    flex-direction: column;
+    align-items: center;
+}
+
+}
+
+</style>
+
+</head>
+<body>
+
+<header>
+<nav>
+<h2>My Portfolio</h2>
+<ul>
+<li><a href="#about">About</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
+</header>
+
+<section id="about">
+
+<img src="profile.jpg" alt="Profile Picture">
+
+<h2>Chitransh Gupta</h2>
+
+<p>
+I am a web developer and software programmer. I create responsive websites using HTML, CSS, JavaScript, and C#.
+</p>
+
+</section>
+
+<section id="projects">
+
+<h2>My Projects</h2>
+
+<div class="project-container">
+
+<div class="project-card">
+<img src="Automobile.jpg">
+<h3>Automobile System</h3>
+<p>Car management website project.</p>
+</div>
+
+<div class="project-card">
+<img src="library.jpg">
+<h3>Library Management</h3>
+<p>Database project using SQL and C#.</p>
+</div>
+
+<div class="project-card">
+<img src="website.jpg">
+<h3>Portfolio Website</h3>
+<p>Personal responsive portfolio.</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="contact">
+
+<h2>Contact Me</h2>
+<p>Email: chitransh@example.com</p>
+
+</section>
+
+<footer>
+
+<p>© 2026 Chitransh Gupta | Portfolio Website</p>
+
+</footer>
+
+</body>
+</html>
