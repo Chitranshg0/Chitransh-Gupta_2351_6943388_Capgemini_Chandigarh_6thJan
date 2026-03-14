@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Assessment.Models.Project>
+
+<h2>Project Dashboard</h2>
+
+@foreach (var project in Model)
+{
+    <h3>@project.Title</h3>
+
+    <table border="1">
+        <tr>
+            <th>Employee Name</th>
+            <th>Department</th>
+        </tr>
+
+        @foreach (var ep in project.EmployeeProjects)
+        {
+            <tr>
+                <td>@ep.Employee.Name</td>
+                <td>@ep.Employee.Department.Name</td>
+            </tr>
+        }
+    </table>
+
+    <br />
+}

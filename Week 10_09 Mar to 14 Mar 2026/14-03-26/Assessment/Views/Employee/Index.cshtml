@@ -1,0 +1,23 @@
+﻿@model IEnumerable<Assessment.Models.Employee>
+
+<h2>Employee List</h2>
+
+<a asp-action="Create">Add Employee</a>
+
+<table border="1">
+<tr>
+<th>Name</th>
+<th>Email</th>
+<th>Department</th>
+</tr>
+
+@foreach(var emp in Model)
+{
+<tr>
+<td>@emp.Name</td>
+<td>@emp.Email</td>
+<td>@emp.Department?.Name</td>
+</tr>
+}
+
+</table>

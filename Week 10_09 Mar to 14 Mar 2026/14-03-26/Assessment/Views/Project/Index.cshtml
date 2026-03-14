@@ -1,0 +1,22 @@
+﻿@model IEnumerable<Assessment.Models.Project>
+
+<h2>Projects</h2>
+
+<a asp-action="Create" class="btn btn-primary">Create New Project</a>
+
+<br /><br />
+
+<table class="table table-bordered">
+
+<tr>
+<th>Project Title</th>
+</tr>
+
+@foreach (var p in Model)
+{
+<tr>
+<td>@p.Title</td>
+</tr>
+}
+
+</table>
