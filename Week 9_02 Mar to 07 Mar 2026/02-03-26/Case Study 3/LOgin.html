@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login & Registration</title>
+
+<style>
+
+/* Page Background Gradient */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Form Container */
+.container {
+    display: flex;
+    gap: 30px;
+}
+
+/* Card Design */
+.form-card {
+    background: white;
+    padding: 30px;
+    width: 300px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+}
+
+/* Form Heading */
+.form-card h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Labels */
+label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* Inputs */
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 8px;
+    border: 1px solid gray;
+    outline: none;
+    transition: 0.3s;
+}
+
+/* Focus Effect */
+input:focus {
+    border-color: #4facfe;
+    box-shadow: 0 0 5px #4facfe;
+}
+
+/* Button */
+button {
+    width: 100%;
+    margin-top: 15px;
+    padding: 10px;
+    border: none;
+    background: #4facfe;
+    color: white;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Button Hover */
+button:hover {
+    background: #007bff;
+}
+
+/* Responsive */
+@media(max-width:768px) {
+
+.container {
+    flex-direction: column;
+}
+
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<!-- Login Form -->
+<div class="form-card">
+
+<h2>Login</h2>
+
+<form>
+
+<label>Username</label>
+<input type="text" placeholder="Enter username" required>
+
+<label>Password</label>
+<input type="password" placeholder="Enter password" required>
+
+<button type="submit">Login</button>
+
+</form>
+
+</div>
+
+
+<!-- Registration Form -->
+<div class="form-card">
+
+<h2>Register</h2>
+
+<form>
+
+<label>Username</label>
+<input type="text" placeholder="Enter username" required>
+
+<label>Email</label>
+<input type="email" placeholder="Enter email" required>
+
+<label>Password</label>
+<input type="password" placeholder="Enter password" required>
+
+<button type="submit">Register</button>
+
+</form>
+
+</div>
+
+</div>
+
+</body>
+</html>
