@@ -1,0 +1,154 @@
+﻿@page
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Booking</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: #333;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+        }
+
+        .title {
+            color: white;
+            font-weight: 600;
+        }
+
+        table {
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .btn-custom {
+            background: linear-gradient(45deg, #00c6ff, #0072ff);
+            border: none;
+            transition: 0.3s;
+        }
+
+        .btn-custom:hover {
+            transform: scale(1.05);
+        }
+
+        .input-box {
+            border-radius: 10px;
+        }
+
+        .badge-seats {
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container mt-5">
+
+    <h2 class="text-center mb-5 title">🎉 Event Booking System</h2>
+
+    <!-- Events -->
+    <div class="glass mb-5">
+        <h4 class="text-white mb-3">Available Events</h4>
+
+        <div class="table-responsive">
+            <table class="table table-hover text-center align-middle">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Seats</th>
+                    </tr>
+                </thead>
+                <tbody id="events"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Booking Card -->
+    <div class="glass">
+        <h4 class="text-white mb-4">🎟️ Book Your Event</h4>
+
+        <div class="row g-3">
+            <div class="col-md-5">
+                <input id="eventId" class="form-control input-box" placeholder="Event ID">
+            </div>
+
+            <div class="col-md-5">
+                <input id="seats" class="form-control input-box" placeholder="Number of Seats">
+            </div>
+
+            <div class="col-md-2">
+                <button onclick="book()" class="btn btn-custom w-100 text-white">
+                    Book
+                </button>
+            </div>
+        </div>
+
+        <div id="status" class="mt-3 text-white"></div>
+    </div>
+
+</div>
+
+<script>
+// Load events
+fetch("http://localhost:5076/api/Events")
+.then(res => res.json())
+.then(data => {
+    let rows = "";
+    data.forEach(e => {
+        rows += `<tr>
+                    <td>${e.id}</td>
+                    <td>${e.title}</td>
+                    <td>
+                        <span class="badge bg-success badge-seats">
+                            ${e.availableSeats}
+                        </span>
+                    </td>
+                 </tr>`;
+    });
+    document.getElementById("events").innerHTML = rows;
+});
+
+// Booking
+function book() {
+    let eventId = document.getElementById("eventId").value;
+    let seats = document.getElementById("seats").value;
+
+    fetch("http://localhost:5076/api/Bookings", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            eventId: parseInt(eventId),
+            seatsBooked: parseInt(seats)
+        })
+    })
+    .then(res => res.text())
+    .then(data => {
+        document.getElementById("status").innerHTML = "✅ " + data;
+        setTimeout(() => location.reload(), 1500);
+    })
+    .catch(err => {
+        document.getElementById("status").innerHTML = "❌ Error booking";
+    });
+}
+</script>
+
+</body>
+</html>
