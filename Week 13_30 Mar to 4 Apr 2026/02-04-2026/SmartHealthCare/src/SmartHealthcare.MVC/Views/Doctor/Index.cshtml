@@ -1,0 +1,117 @@
+@model SmartHealthcare.Models.DTOs.PagedResult<SmartHealthcare.Models.DTOs.DoctorDTO>
+
+@{
+    ViewData["Title"] = "Find a Doctor";
+}
+
+<div class="container-fluid mt-4">
+
+    <h1 class="mb-4"><i class="bi bi-stethoscope"></i> Our Medical Professionals</h1>
+
+    <!-- SEARCH -->
+    <form method="get" class="row g-3 mb-4">
+        <div class="col-md-4">
+            <input type="text" name="specialization" value="@ViewBag.Specialization"
+                   class="form-control" placeholder="Specialization">
+        </div>
+
+        <div class="col-md-4">
+            <input type="text" name="name" value="@ViewBag.Name"
+                   class="form-control" placeholder="Doctor Name">
+        </div>
+
+        <div class="col-md-4">
+            <button class="btn btn-primary w-100">Search</button>
+        </div>
+    </form>
+
+    <!-- DOCTORS -->
+    @if (Model?.Items != null && Model.Items.Any())
+    {
+        <div class="row">
+            @foreach (var doctor in Model.Items)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow-sm p-3 h-100">
+
+                        <h5>Dr. @doctor.FullName</h5>
+
+                        <p>
+                            <strong>Specialization:</strong><br />
+                            @string.Join(", ", doctor.Specializations ?? new List<string>())
+                        </p>
+
+                        <p><strong>Experience:</strong> @doctor.YearsOfExperience years</p>
+                        <p><strong>Fee:</strong> ₹@doctor.ConsultationFee</p>
+
+                        <p><strong>Email:</strong> @(doctor.Email ?? "N/A")</p>
+                        <p><strong>Phone:</strong> @(doctor.Phone ?? "N/A")</p>
+
+                        <span class="badge bg-@(doctor.IsAvailable ? "success" : "secondary") mb-2">
+                            @(doctor.IsAvailable ? "Available" : "Unavailable")
+                        </span>
+
+                        <div class="mt-auto">
+                            <a asp-action="Details" asp-route-id="@doctor.Id"
+                               class="btn btn-outline-primary btn-sm w-100 mb-2">
+                                View Details
+                            </a>
+
+                            @if (doctor.IsAvailable)
+                            {
+                                <a asp-controller="Appointment"
+                                   asp-action="Create"
+                                   asp-route-doctorId="@doctor.Id"
+                                   class="btn btn-success btn-sm w-100">
+                                    Book Appointment
+                                </a>
+                            }
+                        </div>
+
+                    </div>
+                </div>
+            }
+        </div>
+
+        <!-- PAGINATION -->
+        <nav>
+            <ul class="pagination justify-content-center">
+
+                @if (Model.PageNumber > 1)
+                {
+                    <li class="page-item">
+                        <a class="page-link"
+                           href="?page=@(Model.PageNumber - 1)&specialization=@ViewBag.Specialization&name=@ViewBag.Name">
+                            Previous
+                        </a>
+                    </li>
+                }
+
+                <li class="page-item active">
+                    <span class="page-link">
+                        Page @Model.PageNumber of
+                        @Math.Ceiling((decimal)Model.TotalCount / Model.PageSize)
+                    </span>
+                </li>
+
+                @if (Model.PageNumber * Model.PageSize < Model.TotalCount)
+                {
+                    <li class="page-item">
+                        <a class="page-link"
+                           href="?page=@(Model.PageNumber + 1)&specialization=@ViewBag.Specialization&name=@ViewBag.Name">
+                            Next
+                        </a>
+                    </li>
+                }
+
+            </ul>
+        </nav>
+    }
+    else
+    {
+        <div class="alert alert-info text-center">
+            No Doctors Found
+        </div>
+    }
+
+</div>

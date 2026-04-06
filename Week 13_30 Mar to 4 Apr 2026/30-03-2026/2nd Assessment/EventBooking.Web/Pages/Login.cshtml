@@ -1,0 +1,59 @@
+@page
+
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="card shadow p-4" style="width: 400px;">
+
+        <ul class="nav nav-tabs mb-3">
+            <li class="nav-item">
+                <button class="nav-link active" onclick="switchTab('user')">User Login</button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link" onclick="switchTab('admin')">Admin Login</button>
+            </li>
+        </ul>
+
+        <h4 id="title" class="text-center mb-3">User Login</h4>
+
+        <input id="username" class="form-control mb-2" placeholder="Username" />
+        <input id="password" type="password" class="form-control mb-3" placeholder="Password" />
+
+        <button onclick="login()" class="btn btn-dark w-100">Login</button>
+    </div>
+</div>
+
+<script>
+let role = "user";
+
+function switchTab(type){
+    role = type;
+    document.getElementById("title").innerText =
+        type === "admin" ? "Admin Login" : "User Login";
+}
+
+function login(){
+    let username = document.getElementById("username").value;
+    let password = document.getElementById("password").value;
+
+    fetch("http://localhost:5005/api/auth/login", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ username, password, role })
+    })
+    .then(res => {
+        if(!res.ok){
+            alert("Invalid credentials ❌");
+            return;
+        }
+        return res.json();
+    })
+    .then(data => {
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("username", username);
+        localStorage.setItem("role", role);
+
+        window.location.href = "/Home";
+    });
+}
+</script>

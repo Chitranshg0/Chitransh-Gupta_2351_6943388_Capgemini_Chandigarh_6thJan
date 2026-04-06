@@ -1,0 +1,129 @@
+@model SmartHealthcare.Models.DTOs.LoginDTO
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="login-bg d-flex align-items-center justify-content-center">
+
+    <div class="login-card p-4">
+
+        <!-- HEADER -->
+        <div class="text-center mb-4">
+            <div class="logo mb-2">
+                <i class="bi bi-hospital"></i>
+            </div>
+            <h3 class="fw-bold">Smart Healthcare</h3>
+            <p class="text-muted small">Sign in to continue</p>
+        </div>
+
+        <!-- FORM -->
+        <form asp-action="Login" method="post" novalidate>
+
+            <div asp-validation-summary="All" class="alert alert-danger small"></div>
+
+            <!-- EMAIL -->
+            <div class="form-floating mb-3">
+                <input asp-for="Email" class="form-control" placeholder="Email">
+                <label>Email address</label>
+                <span asp-validation-for="Email" class="text-danger small"></span>
+            </div>
+
+            <!-- PASSWORD -->
+            <div class="form-floating mb-3">
+                <input asp-for="Password" type="password" class="form-control" placeholder="Password">
+                <label>Password</label>
+                <span asp-validation-for="Password" class="text-danger small"></span>
+            </div>
+
+            <!-- REMEMBER -->
+            <div class="d-flex justify-content-between mb-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox">
+                    <label class="form-check-label small">Remember me</label>
+                </div>
+
+                <a href="#" class="small text-decoration-none">Forgot?</a>
+            </div>
+
+            <!-- BUTTON -->
+            <button class="btn btn-login w-100 mb-3">
+                Login
+            </button>
+
+            <!-- DEMO -->
+            <div class="demo-box">
+                <strong>Demo:</strong><br>
+                admin@healthcare.com<br>
+                Admin@123
+            </div>
+
+        </form>
+
+        <!-- FOOTER -->
+        <div class="text-center mt-4">
+            <small>
+                Don't have an account?
+                <a asp-action="Register" class="fw-bold text-decoration-none">Register</a>
+            </small>
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+<style>
+    /* Background */
+    .login-bg {
+        min-height: 100vh;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+    }
+
+    /* Card */
+    .login-card {
+        width: 100%;
+        max-width: 380px;
+        background: rgba(255,255,255,0.9);
+        backdrop-filter: blur(12px);
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    /* Logo */
+    .logo {
+        font-size: 40px;
+        color: #667eea;
+    }
+
+    /* Button */
+    .btn-login {
+        background: linear-gradient(45deg, #667eea, #5a67d8);
+        color: white;
+        border-radius: 30px;
+        padding: 10px;
+        font-weight: 600;
+        transition: 0.3s;
+    }
+
+    .btn-login:hover {
+        transform: scale(1.03);
+    }
+
+    /* Demo */
+    .demo-box {
+        background: #f1f5f9;
+        padding: 10px;
+        border-radius: 10px;
+        font-size: 12px;
+        text-align: center;
+    }
+
+    /* Inputs */
+    .form-control:focus {
+        border-color: #667eea;
+        box-shadow: 0 0 0 0.2rem rgba(102,126,234,0.25);
+    }
+</style>

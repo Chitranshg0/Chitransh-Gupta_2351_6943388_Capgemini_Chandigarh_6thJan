@@ -1,24 +1,65 @@
 @page
 @model IndexModel
 
+<!-- 🔐 AUTH CHECK -->
 <script>
 if(!localStorage.getItem("token")){
     window.location.href = "/Login";
 }
 </script>
 
-<div class="container">
+<!-- 🎨 STYLES -->
+<style>
+body {
+    background: linear-gradient(135deg, #eef2f3, #dfe9f3);
+}
+
+/* HEADER */
+.header-box {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 25px;
+    border-radius: 15px;
+}
+
+/* EVENT CARD */
+.event-card {
+    border-radius: 15px;
+    transition: 0.3s;
+}
+.event-card:hover {
+    transform: translateY(-6px);
+}
+
+/* BOOKING CARD */
+.booking-card {
+    border-left: 5px solid #667eea;
+    border-radius: 12px;
+}
+
+/* BUTTON */
+.btn-custom {
+    border-radius: 25px;
+}
+
+/* MODAL */
+.modal-content {
+    border-radius: 15px;
+}
+</style>
+
+<div class="container py-4">
 
     <!-- 🔷 HEADER -->
-    <div class="mb-4">
+    <div class="header-box mb-4 shadow">
         <h2 class="fw-bold">🎉 Upcoming Events</h2>
-        <p class="text-muted">Explore and book your favorite events</p>
+        <p>Explore and book your favorite events easily</p>
     </div>
 
     <!-- 🔷 EVENTS -->
     <div class="row" id="eventsList"></div>
 
-    <hr class="my-4"/>
+    <hr class="my-5"/>
 
     <!-- 🔷 BOOKINGS -->
     <h4 class="fw-bold mb-3">📄 Your Bookings</h4>
@@ -26,30 +67,50 @@ if(!localStorage.getItem("token")){
 
 </div>
 
+<!-- 🔥 BOOKING MODAL -->
+<div class="modal fade" id="bookingModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content p-3">
+
+      <h5 class="fw-bold mb-3">🎟 Book Event</h5>
+
+      <input type="text" id="userName" class="form-control mb-2" placeholder="Enter your name">
+      <input type="number" id="seatCount" class="form-control mb-3" placeholder="Enter seats">
+
+      <button class="btn btn-primary w-100 btn-custom" onclick="confirmBooking()">Confirm Booking</button>
+
+    </div>
+  </div>
+</div>
+
 <script>
-@* let token = localStorage.getItem("token"); *@
+let selectedEventId = null;
+
 function getToken(){
     return localStorage.getItem("token");
 }
 
+/* 🔷 LOAD EVENTS */
 function loadEvents() {
     fetch("http://localhost:5003/api/events")
     .then(res => res.json())
     .then(data => {
+
         let html = "";
 
         data.forEach(e => {
             html += `
             <div class="col-md-4">
-                <div class="card shadow-sm border-0 mb-4">
+                <div class="card event-card shadow-sm mb-4">
                     <div class="card-body">
                         <h5 class="fw-bold">${e.title}</h5>
                         <p class="text-muted mb-1">📍 ${e.location}</p>
                         <p class="text-muted mb-1">📅 ${new Date(e.date).toLocaleDateString()}</p>
                         <p class="text-muted">🎟 Seats: ${e.availableSeats}</p>
 
-                        <button class="btn btn-dark w-100" onclick="book(${e.id})">
-                            Book Now
+                        <button class="btn btn-dark w-100 mt-2 btn-custom"
+                            onclick="openModal(${e.id})">
+                            🎟 Book Now
                         </button>
                     </div>
                 </div>
@@ -57,15 +118,27 @@ function loadEvents() {
         });
 
         document.getElementById("eventsList").innerHTML = html;
-    })
-    .catch(err => {
-        console.error("Events error:", err);
     });
 }
 
-function book(eventId){
-    let name = prompt("Enter your name:");
-    let seats = prompt("Enter number of seats:");
+/* 🔥 OPEN MODAL */
+function openModal(eventId){
+    selectedEventId = eventId;
+
+    let modal = new bootstrap.Modal(document.getElementById('bookingModal'));
+    modal.show();
+}
+
+/* 🔥 CONFIRM BOOKING */
+function confirmBooking(){
+
+    let name = document.getElementById("userName").value;
+    let seats = document.getElementById("seatCount").value;
+
+    if(!name || !seats){
+        alert("Please fill all fields");
+        return;
+    }
 
     fetch("http://localhost:5003/api/bookings", {
         method: "POST",
@@ -74,7 +147,7 @@ function book(eventId){
             "Authorization": "Bearer " + getToken()
         },
         body: JSON.stringify({
-            eventId: eventId,
+            eventId: selectedEventId,
             userId: name,
             seatsBooked: parseInt(seats)
         })
@@ -82,11 +155,18 @@ function book(eventId){
     .then(res => res.text())
     .then(msg => {
         alert(msg);
+
         loadBookings();
         loadEvents();
+
+        document.getElementById("userName").value = "";
+        document.getElementById("seatCount").value = "";
+
+        bootstrap.Modal.getInstance(document.getElementById('bookingModal')).hide();
     });
 }
 
+/* 🔷 LOAD BOOKINGS */
 function loadBookings(){
     let token = getToken();
 
@@ -103,7 +183,6 @@ function loadBookings(){
     })
     .then(res => res.json())
     .then(data => {
-        console.log("BOOKINGS:", data);
 
         let html = "";
 
@@ -113,16 +192,20 @@ function loadBookings(){
 
         data.forEach(b => {
             html += `
-            <div class="card shadow-sm border-0 p-3 mb-3">
-                <div class="d-flex justify-content-between">
+            <div class="card booking-card shadow-sm p-3 mb-3">
+                <div class="d-flex justify-content-between align-items-center">
+
                     <div>
-                        <p class="mb-1"><b>User:</b> ${b.userId}</p>
-                        <p class="mb-1"><b>Event ID:</b> ${b.eventId}</p>
-                        <p class="mb-0"><b>Seats:</b> ${b.seatsBooked}</p>
+                        <p class="mb-1"><b>👤 User:</b> ${b.userId}</p>
+                        <p class="mb-1"><b>🎫 Event ID:</b> ${b.eventId}</p>
+                        <p class="mb-0"><b>💺 Seats:</b> ${b.seatsBooked}</p>
                     </div>
-                    <button onclick="cancelBooking(${b.id})" class="btn btn-danger btn-sm">
-                        Cancel
+
+                    <button onclick="cancelBooking(${b.id})"
+                        class="btn btn-danger btn-sm btn-custom">
+                        ❌ Cancel
                     </button>
+
                 </div>
             </div>`;
         });
@@ -131,6 +214,7 @@ function loadBookings(){
     });
 }
 
+/* ❌ CANCEL BOOKING */
 function cancelBooking(id){
     fetch(`http://localhost:5003/api/bookings/cancel/${id}`, {
         method: "DELETE",
@@ -143,10 +227,10 @@ function cancelBooking(id){
         alert(msg);
         loadBookings();
         loadEvents();
-    })
-    .catch(err => console.log("Cancel error:", err));
+    });
 }
 
+/* 🚀 INIT */
 loadEvents();
 loadBookings();
 </script>

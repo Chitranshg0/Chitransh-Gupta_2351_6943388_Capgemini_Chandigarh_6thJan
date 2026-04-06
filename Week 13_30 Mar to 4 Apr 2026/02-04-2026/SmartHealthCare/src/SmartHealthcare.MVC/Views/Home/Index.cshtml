@@ -1,0 +1,183 @@
+﻿@{
+    ViewData["Title"] = "Home";
+    var token = Context.Session.GetString("Token");
+}
+
+<div class="container-fluid p-0">
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+
+        <div class="hero-content text-center">
+            <h1 class="hero-title">
+                Smart Healthcare <span>Platform</span>
+            </h1>
+
+            <p class="hero-subtitle">
+                Manage patients, doctors, and appointments with a modern digital healthcare system.
+            </p>
+
+            <div class="hero-buttons">
+                @if (token == null)
+                {
+                    <a asp-controller="Account" asp-action="Register" class="btn btn-light btn-lg">
+                        Get Started
+                    </a>
+                    <a asp-controller="Doctor" asp-action="Index" class="btn btn-outline-light btn-lg">
+                        Browse Doctors
+                    </a>
+                }
+                else
+                {
+                    <a asp-controller="Dashboard" asp-action="Index" class="btn btn-light btn-lg">
+                        Go to Dashboard
+                    </a>
+                    <a asp-controller="Appointment" asp-action="Create" class="btn btn-outline-light btn-lg">
+                        Book Appointment
+                    </a>
+                }
+            </div>
+        </div>
+
+        <!-- STATS -->
+        <div class="hero-stats">
+            <div class="stat-box">
+                <h3>24/7</h3>
+                <p>Access</p>
+            </div>
+            <div class="stat-box">
+                <h3>Fast</h3>
+                <p>Booking</p>
+            </div>
+            <div class="stat-box">
+                <h3>Secure</h3>
+                <p>System</p>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features container mt-5">
+
+        <div class="row text-center mb-4">
+            <h2 class="fw-bold">Platform Features</h2>
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <i class="bi bi-person-lines-fill"></i>
+                    <h5>Patient Management</h5>
+                    <p>Book appointments, manage records, and track health easily.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <i class="bi bi-hospital"></i>
+                    <h5>Doctor Dashboard</h5>
+                    <p>Manage schedules, patients, and prescriptions efficiently.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <i class="bi bi-graph-up"></i>
+                    <h5>Admin Analytics</h5>
+                    <p>Monitor system data and generate reports instantly.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- CTA -->
+    <section class="cta mt-5 text-center">
+        <h2>Start Your Healthcare Journey Today</h2>
+        <p class="text-muted">Join thousands of users already using Smart Healthcare</p>
+
+        @if (token == null)
+        {
+            <a asp-controller="Account" asp-action="Register" class="btn btn-primary btn-lg">
+                Create Account
+            </a>
+        }
+    </section>
+
+</div>
+
+<style>
+    /* HERO */
+    .hero {
+        height: 90vh;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+
+    .hero-title {
+        font-size: 3rem;
+        font-weight: bold;
+    }
+
+    .hero-title span {
+        color: #ffd700;
+    }
+
+    .hero-subtitle {
+        margin-top: 10px;
+        font-size: 1.2rem;
+    }
+
+    .hero-buttons {
+        margin-top: 20px;
+    }
+
+    /* STATS */
+    .hero-stats {
+        position: absolute;
+        bottom: 20px;
+        display: flex;
+        gap: 20px;
+    }
+
+    .stat-box {
+        background: rgba(255,255,255,0.2);
+        padding: 15px 25px;
+        border-radius: 10px;
+        backdrop-filter: blur(10px);
+    }
+
+    /* FEATURES */
+    .feature-card {
+        background: white;
+        padding: 25px;
+        border-radius: 15px;
+        text-align: center;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        transition: 0.3s;
+    }
+
+    .feature-card i {
+        font-size: 30px;
+        color: #667eea;
+        margin-bottom: 10px;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-5px);
+    }
+
+    /* CTA */
+    .cta {
+        padding: 60px;
+        background: #f8f9fa;
+    }
+</style>

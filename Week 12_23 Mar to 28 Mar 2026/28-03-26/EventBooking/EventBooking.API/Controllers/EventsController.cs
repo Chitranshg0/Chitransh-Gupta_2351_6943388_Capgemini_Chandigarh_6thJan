@@ -20,5 +20,7 @@ namespace EventBooking.API.Controllers
         {
             return Ok(_context.Events.ToList());
         }
-    }
+       
 }
+    }
+

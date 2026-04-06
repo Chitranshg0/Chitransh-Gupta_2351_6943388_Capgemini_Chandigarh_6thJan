@@ -1,0 +1,100 @@
+@model SmartHealthcare.Models.DTOs.PagedResult<SmartHealthcare.Models.DTOs.UserDTO>
+
+@{
+    ViewData["Title"] = "Manage Users";
+}
+
+<div class="container mt-4">
+
+    <h2>User Management</h2>
+
+    <!-- SEARCH -->
+    <input type="text" id="searchInput" class="form-control mb-3" placeholder="Search users..." />
+
+    @if (Model?.Items != null && Model.Items.Any())
+    {
+        <table class="table table-bordered" id="userTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var user in Model.Items)
+                {
+                    <tr>
+                        <td>@user.Id</td> <!-- ✅ FIXED -->
+
+                        <td>@user.FullName</td>
+
+                        <td>@user.Email</td>
+
+                        <td>
+                            <span class="badge bg-@(user.Role == "Admin" ? "danger" : user.Role == "Doctor" ? "success" : "secondary")">
+                                @user.Role
+                            </span>
+                        </td>
+
+                        <td>
+                            <form asp-action="DeleteUser" method="post" onsubmit="return confirm('Delete user?');">
+                                <input type="hidden" name="id" value="@user.Id" /> <!-- ✅ FIXED -->
+                                <button class="btn btn-danger btn-sm">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <!-- PAGINATION -->
+        <div class="text-center mt-3">
+
+            @if (Model.PageNumber > 1)
+            {
+                <a class="btn btn-outline-primary"
+                   href="?page=@(Model.PageNumber - 1)">
+                    Previous
+                </a>
+            }
+
+            <span class="mx-2">
+                Page @Model.PageNumber of
+                @Math.Ceiling((decimal)Model.TotalCount / Model.PageSize)
+            </span>
+
+            @if (Model.PageNumber * Model.PageSize < Model.TotalCount)
+            {
+                <a class="btn btn-outline-primary"
+                   href="?page=@(Model.PageNumber + 1)">
+                    Next
+                </a>
+            }
+
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info text-center">
+            No Users Found
+        </div>
+    }
+
+</div>
+
+<!-- SEARCH SCRIPT -->
+<script>
+    document.getElementById("searchInput").addEventListener("keyup", function () {
+        let filter = this.value.toLowerCase();
+        let rows = document.querySelectorAll("#userTable tbody tr");
+
+        rows.forEach(row => {
+            let text = row.innerText.toLowerCase();
+            row.style.display = text.includes(filter) ? "" : "none";
+        });
+    });
+</script>
