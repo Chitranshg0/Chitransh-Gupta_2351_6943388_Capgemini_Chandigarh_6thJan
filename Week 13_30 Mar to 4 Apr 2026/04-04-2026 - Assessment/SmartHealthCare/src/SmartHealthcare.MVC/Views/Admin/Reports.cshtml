@@ -1,0 +1,172 @@
+@{
+    ViewData["Title"] = "Admin Reports";
+}
+
+<div class="container-fluid mt-4">
+
+    <!-- HEADER -->
+    <div class="mb-4">
+        <h2 class="fw-bold text-gradient">
+            <i class="bi bi-graph-up"></i> Analytics Dashboard
+        </h2>
+        <p class="text-muted">Monitor system performance & insights</p>
+    </div>
+
+    <!-- MAIN CARD -->
+    <div class="card border-0 shadow-lg rounded-4 glass-card p-4">
+
+        @if (ViewBag.Report != null)
+        {
+            <!-- TOP STATS -->
+            <div class="row g-4">
+
+                <div class="col-md-3">
+                    <div class="stat-card primary">
+                        <i class="bi bi-people"></i>
+                        <h6>Total Users</h6>
+                        <h3>@((dynamic)ViewBag.Report).TotalUsers</h3>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="stat-card info">
+                        <i class="bi bi-person-check"></i>
+                        <h6>Total Patients</h6>
+                        <h3>@((dynamic)ViewBag.Report).TotalPatients</h3>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="stat-card success">
+                        <i class="bi bi-hospital"></i>
+                        <h6>Total Doctors</h6>
+                        <h3>@((dynamic)ViewBag.Report).TotalDoctors</h3>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="stat-card warning">
+                        <i class="bi bi-calendar-check"></i>
+                        <h6>Total Appointments</h6>
+                        <h3>@((dynamic)ViewBag.Report).TotalAppointments</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- APPOINTMENTS -->
+            <h5 class="mt-5 mb-3 fw-semibold">
+                <i class="bi bi-line-chart"></i> Appointment Overview
+            </h5>
+
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="stat-card light-warning">
+                        <h6>Pending</h6>
+                        <h3>@((dynamic)ViewBag.Report).PendingAppointments</h3>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="stat-card light-success">
+                        <h6>Completed</h6>
+                        <h3>@((dynamic)ViewBag.Report).CompletedAppointments</h3>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="stat-card light-danger">
+                        <h6>Cancelled</h6>
+                        <h3>@((dynamic)ViewBag.Report).CancelledAppointments</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRESCRIPTIONS -->
+            <h5 class="mt-5 mb-3 fw-semibold">
+                <i class="bi bi-capsule"></i> Prescription Stats
+            </h5>
+
+            <div class="stat-card primary w-100">
+                <h6>Total Prescriptions</h6>
+                <h3>@((dynamic)ViewBag.Report).TotalPrescriptions</h3>
+            </div>
+
+            <!-- FOOTER -->
+            <div class="alert alert-info mt-4 rounded-3">
+                <i class="bi bi-clock"></i>
+                Last Updated: @DateTime.Now.ToString("dd MMM yyyy, HH:mm:ss")
+            </div>
+        }
+        else
+        {
+            <div class="text-center p-5">
+                <i class="bi bi-exclamation-circle display-4 text-muted"></i>
+                <h5 class="mt-3">No Data Available</h5>
+                <p class="text-muted">Reports will appear once data is generated.</p>
+            </div>
+        }
+    </div>
+</div>
+
+<style>
+    /* Gradient Text */
+    .text-gradient {
+        background: linear-gradient(45deg, #007bff, #00c6ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    /* Glass Effect */
+    .glass-card {
+        background: rgba(255,255,255,0.9);
+        backdrop-filter: blur(12px);
+    }
+
+    /* STAT CARDS */
+    .stat-card {
+        padding: 20px;
+        border-radius: 15px;
+        color: white;
+        transition: all 0.3s ease;
+    }
+
+    .stat-card i {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    .stat-card h6 {
+        font-weight: 500;
+        opacity: 0.9;
+    }
+
+    .stat-card h3 {
+        font-weight: bold;
+        margin-top: 5px;
+    }
+
+    .stat-card:hover {
+        transform: translateY(-5px);
+    }
+
+    /* COLORS */
+    .primary { background: linear-gradient(45deg, #007bff, #0056b3); }
+    .info { background: linear-gradient(45deg, #17a2b8, #117a8b); }
+    .success { background: linear-gradient(45deg, #28a745, #1e7e34); }
+    .warning { background: linear-gradient(45deg, #ffc107, #d39e00); }
+
+    .light-warning {
+        background: #fff3cd;
+        color: #856404;
+    }
+
+    .light-success {
+        background: #d4edda;
+        color: #155724;
+    }
+
+    .light-danger {
+        background: #f8d7da;
+        color: #721c24;
+    }
+</style>

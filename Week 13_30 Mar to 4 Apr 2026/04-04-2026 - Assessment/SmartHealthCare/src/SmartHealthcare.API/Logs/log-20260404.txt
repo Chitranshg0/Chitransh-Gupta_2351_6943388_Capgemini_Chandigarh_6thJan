@@ -1,0 +1,299 @@
+2026-04-04 09:50:41.337 +05:30 [INF] Executed DbCommand (19ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-04-04 09:50:41.415 +05:30 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-04-04 09:50:41.423 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-04-04 09:50:41.428 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-04-04 09:50:41.463 +05:30 [INF] Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2026-04-04 09:50:41.482 +05:30 [INF] No migrations were applied. The database is already up to date.
+2026-04-04 09:50:41.681 +05:30 [INF] Executed DbCommand (20ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Doctors] AS [d]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-04-04 09:50:41.712 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Patients] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-04-04 09:50:41.730 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Appointments] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-04-04 09:50:41.748 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Prescriptions] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-04-04 09:50:41.771 +05:30 [INF] User profile is available. Using 'C:\Users\Chitransh Gupta\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-04-04 09:50:41.851 +05:30 [INF] Now listening on: http://localhost:5293
+2026-04-04 09:50:41.857 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-04-04 09:50:41.861 +05:30 [INF] Hosting environment: Development
+2026-04-04 09:50:41.865 +05:30 [INF] Content root path: C:\Users\Chitransh Gupta\source\repos\Capgemini+CU_Section3_DotnetAzure_Chitransh\Week 13_30 Mar to 4 Apr 2026\02-04-2026\SmartHealthCare\src\SmartHealthcare.API
+2026-04-04 09:50:44.001 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5293/ - null null
+2026-04-04 09:50:44.054 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-04-04 09:50:44.061 +05:30 [INF] Incoming Request: GET / at "2026-04-04T04:20:44.0601669Z"
+2026-04-04 09:50:44.106 +05:30 [INF] Outgoing Response: 404 for GET / in 46ms
+2026-04-04 09:50:44.123 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5293/ - 404 0 null 125.7265ms
+2026-04-04 09:50:44.135 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5293/, Response status code: 404
+2026-04-04 09:50:50.462 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5293/swagger/index.html - null null
+2026-04-04 09:50:50.695 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5293/swagger/index.html - 200 null text/html;charset=utf-8 233.0444ms
+2026-04-04 09:50:50.845 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5293/swagger/v1/swagger.json - null null
+2026-04-04 09:50:51.275 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5293/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 429.1896ms
+2026-04-04 09:53:00.685 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5293/api/auth/login - application/json; charset=utf-8 55
+2026-04-04 09:53:00.704 +05:30 [INF] Incoming Request: POST /api/auth/login at "2026-04-04T04:23:00.7045906Z"
+2026-04-04 09:53:00.719 +05:30 [INF] Executing endpoint 'SmartHealthcare.API.Controllers.AuthController.Login (SmartHealthcare.API)'
+2026-04-04 09:53:00.786 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(SmartHealthcare.Models.DTOs.LoginDTO) on controller SmartHealthcare.API.Controllers.AuthController (SmartHealthcare.API).
+2026-04-04 09:53:01.809 +05:30 [INF] Executed DbCommand (50ms) [Parameters=[@__email_0='?' (Size = 150)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreatedAt], [t].[Email], [t].[FullName], [t].[PasswordHash], [t].[Role], [r].[Id], [r].[CreatedAt], [r].[ExpiresAt], [r].[IsRevoked], [r].[Token], [r].[UserId]
+FROM (
+    SELECT TOP(1) [u].[Id], [u].[CreatedAt], [u].[Email], [u].[FullName], [u].[PasswordHash], [u].[Role]
+    FROM [Users] AS [u]
+    WHERE [u].[Email] = @__email_0
+) AS [t]
+LEFT JOIN [RefreshTokens] AS [r] ON [t].[Id] = [r].[UserId]
+ORDER BY [t].[Id]
+2026-04-04 09:53:02.533 +05:30 [INF] User logged in: admin@healthcare.com
+2026-04-04 09:53:03.108 +05:30 [INF] Executed DbCommand (33ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (DbType = Boolean), @p3='?' (Size = 4000), @p4='?' (DbType = Int32), @p10='?' (DbType = Int32), @p5='?' (DbType = DateTime2), @p6='?' (Size = 150), @p7='?' (Size = 100), @p8='?' (Size = 4000), @p9='?' (Size = 20)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [RefreshTokens] ([CreatedAt], [ExpiresAt], [IsRevoked], [Token], [UserId])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+UPDATE [Users] SET [CreatedAt] = @p5, [Email] = @p6, [FullName] = @p7, [PasswordHash] = @p8, [Role] = @p9
+OUTPUT 1
+WHERE [Id] = @p10;
+2026-04-04 09:53:03.243 +05:30 [INF] Executing OkObjectResult, writing value of type 'SmartHealthcare.Models.DTOs.TokenDTO'.
+2026-04-04 09:53:03.363 +05:30 [INF] Executed action SmartHealthcare.API.Controllers.AuthController.Login (SmartHealthcare.API) in 2555.9804ms
+2026-04-04 09:53:03.372 +05:30 [INF] Executed endpoint 'SmartHealthcare.API.Controllers.AuthController.Login (SmartHealthcare.API)'
+2026-04-04 09:53:03.383 +05:30 [INF] Outgoing Response: 200 for POST /api/auth/login in 2678ms
+2026-04-04 09:53:03.410 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5293/api/auth/login - 200 838 application/json; charset=utf-8 2724.3858ms
+2026-04-04 09:53:03.621 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5293/api/admin/reports - null null
+2026-04-04 09:53:03.650 +05:30 [INF] Incoming Request: GET /api/admin/reports at "2026-04-04T04:23:03.6500178Z"
+2026-04-04 09:53:03.862 +05:30 [INF] Executing endpoint 'SmartHealthcare.API.Controllers.AdminController.GetReports (SmartHealthcare.API)'
+2026-04-04 09:53:03.889 +05:30 [INF] Route matched with {action = "GetReports", controller = "Admin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetReports() on controller SmartHealthcare.API.Controllers.AdminController (SmartHealthcare.API).
+2026-04-04 09:53:04.549 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Users] AS [u]
+2026-04-04 09:53:04.580 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Patients] AS [p]
+2026-04-04 09:53:04.599 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Doctors] AS [d]
+2026-04-04 09:53:04.622 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Appointments] AS [a]
+2026-04-04 09:53:04.665 +05:30 [INF] Executed DbCommand (21ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Appointments] AS [a]
+WHERE [a].[Status] = N'Pending'
+2026-04-04 09:53:04.686 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Appointments] AS [a]
+WHERE [a].[Status] = N'Completed'
+2026-04-04 09:53:04.705 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Appointments] AS [a]
+WHERE [a].[Status] = N'Cancelled'
+2026-04-04 09:53:04.734 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Prescriptions] AS [p]
+2026-04-04 09:53:04.748 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`8[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-04-04 09:53:04.781 +05:30 [INF] Executed action SmartHealthcare.API.Controllers.AdminController.GetReports (SmartHealthcare.API) in 883.2699ms
+2026-04-04 09:53:04.790 +05:30 [INF] Executed endpoint 'SmartHealthcare.API.Controllers.AdminController.GetReports (SmartHealthcare.API)'
+2026-04-04 09:53:04.797 +05:30 [INF] Outgoing Response: 200 for GET /api/admin/reports in 1147ms
+2026-04-04 09:53:04.806 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5293/api/admin/reports - 200 173 application/json; charset=utf-8 1184.914ms
+2026-04-04 09:53:07.501 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5293/api/doctors - null null
+2026-04-04 09:53:07.514 +05:30 [INF] Incoming Request: GET /api/doctors at "2026-04-04T04:23:07.5145189Z"
+2026-04-04 09:53:07.526 +05:30 [INF] Executing endpoint 'SmartHealthcare.API.Controllers.DoctorsController.GetAll (SmartHealthcare.API)'
+2026-04-04 09:53:07.558 +05:30 [INF] Route matched with {action = "GetAll", controller = "Doctors"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(Int32, Int32) on controller SmartHealthcare.API.Controllers.DoctorsController (SmartHealthcare.API).
+2026-04-04 09:53:07.744 +05:30 [INF] Executed DbCommand (30ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[ConsultationFee], [t].[IsAvailable], [t].[LicenseNumber], [t].[Phone], [t].[UserId], [t].[YearsOfExperience], [u].[Id], [u].[CreatedAt], [u].[Email], [u].[FullName], [u].[PasswordHash], [u].[Role], [t0].[DoctorId], [t0].[SpecializationId], [t0].[Id], [t0].[Description], [t0].[Name]
+FROM (
+    SELECT [d].[Id], [d].[ConsultationFee], [d].[IsAvailable], [d].[LicenseNumber], [d].[Phone], [d].[UserId], [d].[YearsOfExperience]
+    FROM [Doctors] AS [d]
+    ORDER BY [d].[Id]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+INNER JOIN [Users] AS [u] ON [t].[UserId] = [u].[Id]
+LEFT JOIN (
+    SELECT [d0].[DoctorId], [d0].[SpecializationId], [s].[Id], [s].[Description], [s].[Name]
+    FROM [DoctorSpecializations] AS [d0]
+    INNER JOIN [Specializations] AS [s] ON [d0].[SpecializationId] = [s].[Id]
+) AS [t0] ON [t].[Id] = [t0].[DoctorId]
+ORDER BY [t].[Id], [u].[Id], [t0].[DoctorId], [t0].[SpecializationId]
+2026-04-04 09:53:07.913 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Doctors] AS [d]
+2026-04-04 09:53:07.971 +05:30 [INF] Doctor list cached for page 1
+2026-04-04 09:53:07.977 +05:30 [INF] Executing OkObjectResult, writing value of type 'SmartHealthcare.Models.DTOs.PagedResult`1[[SmartHealthcare.Models.DTOs.DoctorDTO, SmartHealthcare.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-04-04 09:53:08.030 +05:30 [INF] Executed action SmartHealthcare.API.Controllers.DoctorsController.GetAll (SmartHealthcare.API) in 460.2865ms
+2026-04-04 09:53:08.037 +05:30 [INF] Executed endpoint 'SmartHealthcare.API.Controllers.DoctorsController.GetAll (SmartHealthcare.API)'
+2026-04-04 09:53:08.042 +05:30 [INF] Outgoing Response: 200 for GET /api/doctors in 527ms
+2026-04-04 09:53:08.050 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5293/api/doctors - 200 1300 application/json; charset=utf-8 548.3894ms
+2026-04-04 10:03:04.047 +05:30 [INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-04-04 10:03:04.119 +05:30 [INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-04-04 10:03:04.124 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-04-04 10:03:04.127 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-04-04 10:03:04.159 +05:30 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2026-04-04 10:03:04.173 +05:30 [INF] No migrations were applied. The database is already up to date.
+2026-04-04 10:03:04.370 +05:30 [INF] Executed DbCommand (37ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Doctors] AS [d]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-04-04 10:03:04.390 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Patients] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-04-04 10:03:04.405 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Appointments] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-04-04 10:03:04.417 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Prescriptions] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-04-04 10:03:04.437 +05:30 [INF] User profile is available. Using 'C:\Users\Chitransh Gupta\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-04-04 10:03:04.502 +05:30 [INF] Now listening on: http://localhost:5293
+2026-04-04 10:03:04.504 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-04-04 10:03:04.505 +05:30 [INF] Hosting environment: Development
+2026-04-04 10:03:04.506 +05:30 [INF] Content root path: C:\Users\Chitransh Gupta\source\repos\Capgemini+CU_Section3_DotnetAzure_Chitransh\Week 13_30 Mar to 4 Apr 2026\02-04-2026\SmartHealthCare\src\SmartHealthcare.API
+2026-04-04 10:03:06.557 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5293/ - null null
+2026-04-04 10:03:06.650 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-04-04 10:03:06.657 +05:30 [INF] Incoming Request: GET / at "2026-04-04T04:33:06.6558082Z"
+2026-04-04 10:03:06.704 +05:30 [INF] Outgoing Response: 404 for GET / in 48ms
+2026-04-04 10:03:06.715 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5293/ - 404 0 null 163.196ms
+2026-04-04 10:03:06.722 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5293/, Response status code: 404
+2026-04-04 10:03:10.297 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5293/swagger/index.html - null null
+2026-04-04 10:03:10.407 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5293/swagger/index.html - 200 null text/html;charset=utf-8 109.9587ms
+2026-04-04 10:03:10.542 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5293/swagger/v1/swagger.json - null null
+2026-04-04 10:03:10.638 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5293/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 96.2918ms
+2026-04-04 10:04:25.543 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5293/api/auth/login - application/json; charset=utf-8 55
+2026-04-04 10:04:25.559 +05:30 [INF] Incoming Request: POST /api/auth/login at "2026-04-04T04:34:25.5589067Z"
+2026-04-04 10:04:25.572 +05:30 [INF] Executing endpoint 'SmartHealthcare.API.Controllers.AuthController.Login (SmartHealthcare.API)'
+2026-04-04 10:04:25.639 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(SmartHealthcare.Models.DTOs.LoginDTO) on controller SmartHealthcare.API.Controllers.AuthController (SmartHealthcare.API).
+2026-04-04 10:04:26.709 +05:30 [INF] Executed DbCommand (67ms) [Parameters=[@__email_0='?' (Size = 150)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreatedAt], [t].[Email], [t].[FullName], [t].[PasswordHash], [t].[Role], [r].[Id], [r].[CreatedAt], [r].[ExpiresAt], [r].[IsRevoked], [r].[Token], [r].[UserId]
+FROM (
+    SELECT TOP(1) [u].[Id], [u].[CreatedAt], [u].[Email], [u].[FullName], [u].[PasswordHash], [u].[Role]
+    FROM [Users] AS [u]
+    WHERE [u].[Email] = @__email_0
+) AS [t]
+LEFT JOIN [RefreshTokens] AS [r] ON [t].[Id] = [r].[UserId]
+ORDER BY [t].[Id]
+2026-04-04 10:04:27.494 +05:30 [INF] User logged in: admin@healthcare.com
+2026-04-04 10:04:28.036 +05:30 [INF] Executed DbCommand (34ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (DbType = Boolean), @p3='?' (Size = 4000), @p4='?' (DbType = Int32), @p10='?' (DbType = Int32), @p5='?' (DbType = DateTime2), @p6='?' (Size = 150), @p7='?' (Size = 100), @p8='?' (Size = 4000), @p9='?' (Size = 20)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [RefreshTokens] ([CreatedAt], [ExpiresAt], [IsRevoked], [Token], [UserId])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+UPDATE [Users] SET [CreatedAt] = @p5, [Email] = @p6, [FullName] = @p7, [PasswordHash] = @p8, [Role] = @p9
+OUTPUT 1
+WHERE [Id] = @p10;
+2026-04-04 10:04:28.171 +05:30 [INF] Executing OkObjectResult, writing value of type 'SmartHealthcare.Models.DTOs.TokenDTO'.
+2026-04-04 10:04:28.289 +05:30 [INF] Executed action SmartHealthcare.API.Controllers.AuthController.Login (SmartHealthcare.API) in 2630.1373ms
+2026-04-04 10:04:28.295 +05:30 [INF] Executed endpoint 'SmartHealthcare.API.Controllers.AuthController.Login (SmartHealthcare.API)'
+2026-04-04 10:04:28.305 +05:30 [INF] Outgoing Response: 200 for POST /api/auth/login in 2746ms
+2026-04-04 10:04:28.325 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5293/api/auth/login - 200 838 application/json; charset=utf-8 2781.2407ms
+2026-04-04 10:04:28.550 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5293/api/admin/reports - null null
+2026-04-04 10:04:28.572 +05:30 [INF] Incoming Request: GET /api/admin/reports at "2026-04-04T04:34:28.5725232Z"
+2026-04-04 10:04:28.729 +05:30 [INF] Executing endpoint 'SmartHealthcare.API.Controllers.AdminController.GetReports (SmartHealthcare.API)'
+2026-04-04 10:04:28.761 +05:30 [INF] Route matched with {action = "GetReports", controller = "Admin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetReports() on controller SmartHealthcare.API.Controllers.AdminController (SmartHealthcare.API).
+2026-04-04 10:04:29.424 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Users] AS [u]
+2026-04-04 10:04:29.451 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Patients] AS [p]
+2026-04-04 10:04:29.471 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Doctors] AS [d]
+2026-04-04 10:04:29.491 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Appointments] AS [a]
+2026-04-04 10:04:29.519 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Appointments] AS [a]
+WHERE [a].[Status] = N'Pending'
+2026-04-04 10:04:29.538 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Appointments] AS [a]
+WHERE [a].[Status] = N'Completed'
+2026-04-04 10:04:29.558 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Appointments] AS [a]
+WHERE [a].[Status] = N'Cancelled'
+2026-04-04 10:04:29.579 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Prescriptions] AS [p]
+2026-04-04 10:04:29.591 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`8[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-04-04 10:04:29.623 +05:30 [INF] Executed action SmartHealthcare.API.Controllers.AdminController.GetReports (SmartHealthcare.API) in 849.9633ms
+2026-04-04 10:04:29.630 +05:30 [INF] Executed endpoint 'SmartHealthcare.API.Controllers.AdminController.GetReports (SmartHealthcare.API)'
+2026-04-04 10:04:29.637 +05:30 [INF] Outgoing Response: 200 for GET /api/admin/reports in 1064ms
+2026-04-04 10:04:29.643 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5293/api/admin/reports - 200 173 application/json; charset=utf-8 1093.0981ms
+2026-04-04 10:04:33.135 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5293/api/api/doctors?pageNumber=1&pageSize=100 - null null
+2026-04-04 10:04:33.151 +05:30 [INF] Incoming Request: GET /api/api/doctors at "2026-04-04T04:34:33.1518640Z"
+2026-04-04 10:04:33.164 +05:30 [INF] Outgoing Response: 404 for GET /api/api/doctors in 12ms
+2026-04-04 10:04:33.174 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5293/api/api/doctors?pageNumber=1&pageSize=100 - 404 0 null 38.1629ms
+2026-04-04 10:04:33.195 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5293/api/api/doctors, Response status code: 404
+2026-04-04 10:05:46.526 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5293/api/Doctors?pageNumber=1&pageSize=10 - null null
+2026-04-04 10:05:46.537 +05:30 [INF] Incoming Request: GET /api/Doctors at "2026-04-04T04:35:46.5376172Z"
+2026-04-04 10:05:46.545 +05:30 [INF] Executing endpoint 'SmartHealthcare.API.Controllers.DoctorsController.GetAll (SmartHealthcare.API)'
+2026-04-04 10:05:46.572 +05:30 [INF] Route matched with {action = "GetAll", controller = "Doctors"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(Int32, Int32) on controller SmartHealthcare.API.Controllers.DoctorsController (SmartHealthcare.API).
+2026-04-04 10:05:46.704 +05:30 [INF] Executed DbCommand (23ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[ConsultationFee], [t].[IsAvailable], [t].[LicenseNumber], [t].[Phone], [t].[UserId], [t].[YearsOfExperience], [u].[Id], [u].[CreatedAt], [u].[Email], [u].[FullName], [u].[PasswordHash], [u].[Role], [t0].[DoctorId], [t0].[SpecializationId], [t0].[Id], [t0].[Description], [t0].[Name]
+FROM (
+    SELECT [d].[Id], [d].[ConsultationFee], [d].[IsAvailable], [d].[LicenseNumber], [d].[Phone], [d].[UserId], [d].[YearsOfExperience]
+    FROM [Doctors] AS [d]
+    ORDER BY [d].[Id]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+INNER JOIN [Users] AS [u] ON [t].[UserId] = [u].[Id]
+LEFT JOIN (
+    SELECT [d0].[DoctorId], [d0].[SpecializationId], [s].[Id], [s].[Description], [s].[Name]
+    FROM [DoctorSpecializations] AS [d0]
+    INNER JOIN [Specializations] AS [s] ON [d0].[SpecializationId] = [s].[Id]
+) AS [t0] ON [t].[Id] = [t0].[DoctorId]
+ORDER BY [t].[Id], [u].[Id], [t0].[DoctorId], [t0].[SpecializationId]
+2026-04-04 10:05:46.873 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Doctors] AS [d]
+2026-04-04 10:05:46.944 +05:30 [INF] Doctor list cached for page 1
+2026-04-04 10:05:46.951 +05:30 [INF] Executing OkObjectResult, writing value of type 'SmartHealthcare.Models.DTOs.PagedResult`1[[SmartHealthcare.Models.DTOs.DoctorDTO, SmartHealthcare.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-04-04 10:05:47.014 +05:30 [INF] Executed action SmartHealthcare.API.Controllers.DoctorsController.GetAll (SmartHealthcare.API) in 428.6193ms
+2026-04-04 10:05:47.017 +05:30 [INF] Executed endpoint 'SmartHealthcare.API.Controllers.DoctorsController.GetAll (SmartHealthcare.API)'
+2026-04-04 10:05:47.021 +05:30 [INF] Outgoing Response: 200 for GET /api/Doctors in 483ms
+2026-04-04 10:05:47.026 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5293/api/Doctors?pageNumber=1&pageSize=10 - 200 1300 application/json; charset=utf-8 499.4946ms

@@ -1,0 +1,64 @@
+@model SmartHealthcare.Models.DTOs.CreateAppointmentDTO
+
+@{
+    ViewData["Title"] = "Book Appointment";
+    var doctors = ViewBag.Doctors as IEnumerable<SmartHealthcare.Models.DTOs.DoctorDTO> 
+                  ?? Enumerable.Empty<SmartHealthcare.Models.DTOs.DoctorDTO>();
+}
+
+<div class="container mt-4">
+    <div class="card shadow-lg">
+        <div class="card-header bg-success text-white">
+            <h2>Book Appointment</h2>
+        </div>
+
+        <div class="card-body">
+
+            <form asp-action="Create" method="post">
+
+                <!-- Doctor -->
+                <div class="mb-3">
+                    <label class="form-label">Select Doctor</label>
+
+                    <select asp-for="DoctorId" class="form-select">
+                        <option value="">-- Choose a doctor --</option>
+
+                        @foreach (var doctor in doctors)
+                        {
+                            <option value="@doctor.Id">
+                                @doctor.FullName (@string.Join(", ", doctor.Specializations ?? new List<string>()))
+                            </option>
+                        }
+                    </select>
+
+                    <span asp-validation-for="DoctorId" class="text-danger"></span>
+                </div>
+
+                <!-- Date -->
+                <div class="mb-3">
+                    <label class="form-label">Appointment Date</label>
+
+                    <input asp-for="AppointmentDate"
+                           type="datetime-local"
+                           class="form-control" />
+
+                    <span asp-validation-for="AppointmentDate" class="text-danger"></span>
+                </div>
+
+                <!-- Notes -->
+                <div class="mb-3">
+                    <label class="form-label">Notes</label>
+
+                    <textarea asp-for="Notes"
+                              class="form-control"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-success">
+                    Book Appointment
+                </button>
+
+            </form>
+
+        </div>
+    </div>
+</div>
